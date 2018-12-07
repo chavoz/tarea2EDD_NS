@@ -83,13 +83,15 @@ class Node:
 			left_child.parent = self
 			right_child.parent = self
 			
-	# find an item in the tree; return item, or False if not found		
+	# find an item in the tree; return anime, genre if found  or anything if not found	
 	def _find(self, item):
 		# print ("Find " + str(item))
 		if item in self.data:
-			return item
+			print(item," = ",self.t[self.data.index(item)])
+			return
 		elif self._isLeaf():
-			return False
+			print("No se encontro")
+			return
 		elif item > self.data[-1]:
 			return self.child[-1]._find(item)
 		else:
@@ -127,7 +129,7 @@ class Tree:
 		return self.root._find(item)
 		
 	def remove(self, item):
-		self.root.remove(item)
+		self.root._remove(item)
 
 	def preorder(self):
 		print ('----Preorder----')
@@ -161,13 +163,19 @@ while True:
     elif opc == '2':
         arbol.preorder()
     elif opc == '3':
+        inicio = time.time()
         nodo = input("\nIngresa el puntaje del nodoAnime a buscar -> ")
         nodo = float(nodo)
-        res = arbol.search(nodo)
+        res = arbol.find(nodo)
+        final = time.time()
+        print("Se demoro",(final-inicio),"segundos")
     elif opc == '4':
+        inicio = time.time()
         nodo = input("\nIngresa el puntaje del nodoAnime a Eliminar -> ")
         nodo = float(nodo)
-        arbol.delete(nodo)
+        arbol.remove(nodo)
+        final = time.time()
+        print("Se demoro",(final-inicio),"segundos")
     elif opc == '5':
         print("\nElegiste salir...\n")
         os.system("pause")

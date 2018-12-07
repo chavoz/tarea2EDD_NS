@@ -256,7 +256,10 @@ while True:
     elif opc == '6':
         nodo = input("\nIngresa el puntaje del nodoAnime a Eliminar -> ")
         nodo = float(nodo)
+        inicio = time.time()
         arbol.eliminar(nodo)
+        final = time.time()
+        print("Se demoro",(final-inicio),"segundos")
     elif opc == '7':
         print("\nElegiste salir...\n")
         os.system("pause")

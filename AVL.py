@@ -239,13 +239,19 @@ while True:
         for anime in list:
             print(anime)
     elif opc == '3':
+        inicio = time.time()
         nodo = input("\nIngresa el puntaje del nodoAnime a buscar -> ")
         nodo = float(nodo)
         res = arbol.search(nodo)
+        fin = time.time()
+        print("Se demoro",(fin-inicio),"segundos")
     elif opc == '4':
+        inicio = time.time()
         nodo = input("\nIngresa el puntaje del nodoAnime a Eliminar -> ")
         nodo = float(nodo)
         arbol.delete(nodo)
+        fin = time.time()
+        print("Se demoro",(fin-inicio),"segundos")
     elif opc == '5':
         print("\nElegiste salir...\n")
         os.system("pause")
