@@ -1,6 +1,7 @@
 # 2-3 Tree
 # balanced tree data structure with up to 2 data items per node
 import os
+import time
 class Node:
 	def __init__(self, data, t, g, par = None):
 		self.data = list([data]) #Puntaje/clave o score del anime
@@ -137,15 +138,18 @@ id_genero = input('Ingrese ID del tipo/genero anime desea agregar al arbol -> ')
 arbol = Tree()
 from jikanpy import Jikan
 jikan = Jikan()
+inicio = time.time()
 action = jikan.genre(type='anime', genre_id=int(id_genero)) # Obtiene los anime correspondientes a genero_id, 1=action
 for anime in action["anime"]:
     #arbol.insert(anime["score"])
     arbol.insert(anime["score"],anime["title"],float(id_genero))
 print("Animes del genero ", str(id_genero), "agregados")
+final = time.time()
+print("Se demoro",(final-inicio),"segundos")
     #print(anime["titulo"], anime["score"]) # Imprime cada anime con su respectiva puntuación
 
 while True:
-    os.system("cls")
+    #os.system("cls")
     print("Arbol 2-3")
     opc = input("\n1.-Insertar nodo(anime) \n2.-Lista de Animes preorder\n3.-Buscar \n4.-Eliminar \n5.-Salir \n\nElige una opcion -> ")
 

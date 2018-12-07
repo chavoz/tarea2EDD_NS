@@ -1,4 +1,5 @@
 import os
+import time
 class NodoArbol:
     def __init__(self,clave,titulo,genero,izquierdo=None,derecho=None,padre=None):
         self.clave = clave
@@ -208,13 +209,16 @@ from jikanpy import Jikan
 jikan = Jikan()
 action = jikan.genre(type='anime', genre_id=int(id_genero)) # Obtiene los anime correspondientes a genero_id, 1=action
 arbol = ArbolABB()
+inicio = time.time()
 for anime in action["anime"]:
     arbol.agregar(anime["score"],anime["title"],float(id_genero))
 print("Animes del genero ", str(id_genero), "agregados")
+final = time.time()
+print("Se demoro",(final-inicio),"segundos")
     #print(anime["titulo"], anime["score"]) # Imprime cada anime con su respectiva puntuación
 	
 while True:
-    os.system("cls")
+    #os.system("cls")
     print("Arbol ABB")
     opc = input("\n1.-Insertar nodo(anime) \n2.-Inorden (Lista animes MENOR a MAYOR calificacion) \n3.-Preorden \n4.-Postorden \n5.-Buscar \n6.-Eliminar \n7.-Salir \n\nElige una opcion -> ")
 
@@ -241,11 +245,14 @@ while True:
     elif opc == '5':
         nodo = input("\nIngresa el nodo(puntaje) a buscar -> ")
         nodo = float(nodo)
+        inicio = time.time()
         res = arbol._obtener(nodo, arbol.raiz)
         if res == None:
             print("\nNodo no encontrado...")
         else:
             print("\nNodoAnime encontrado -> ",res.titulo, "genero", res.genero)   
+        final = time.time()
+        print("Se demoro",(final-inicio),"segundos")
     elif opc == '6':
         nodo = input("\nIngresa el puntaje del nodoAnime a Eliminar -> ")
         nodo = float(nodo)

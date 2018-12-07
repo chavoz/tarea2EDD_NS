@@ -1,4 +1,5 @@
 import os
+import time
 class Node():
     def __init__(self, key,titulo,genero):
         self.key = key #Puntaje o Calificacion del anime, numero float entre 1 y 10
@@ -215,13 +216,16 @@ from jikanpy import Jikan
 jikan = Jikan()
 action = jikan.genre(type='anime', genre_id=int(id_genero)) # Obtiene los anime correspondientes a genero_id, 1=action
 arbol = AVLTree()
+inicio = time.time()
 for anime in action["anime"]:
     arbol.insert(anime["score"],anime["title"],float(id_genero))
 print("Animes del genero ", str(id_genero), "agregados")
+final = time.time()
+print("Se demoro",(final-inicio),"segundos")
     #print(anime["titulo"], anime["score"]) # Imprime cada anime con su respectiva puntuación
     
 while True:
-    os.system("cls")
+    #os.system("cls")
     print("Arbol AVL")
     opc = input("\n1.-Insertar nodo(anime) \n2.-Inorden (Lista animes MENOR a MAYOR calificacion)\n3.-Buscar \n4.-Eliminar \n5.-Salir \n\nElige una opcion -> ")
 
