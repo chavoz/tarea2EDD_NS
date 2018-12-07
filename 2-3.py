@@ -128,13 +128,6 @@ class Tree:
 	def remove(self, item):
 		self.root.remove(item)
 
-	def mejor(self):
-		print ('----Menor puntaje----')
-		sel = self.root
-		while (sel.child):
-			sel = sel.child
-		print(sel.data)
-
 	def preorder(self):
 		print ('----Preorder----')
 		self.root._preorder()
@@ -152,7 +145,7 @@ for anime in action["anime"]:
 while True:
     os.system("cls")
     print("Arbol 2-3")
-    opc = input("\n1.-Insertar nodo(anime) \n2.-Lista de Animes\n3.-Buscar \n4.-Eliminar \n5.-Salir \n\nElige una opcion -> ")
+    opc = input("\n1.-Insertar nodo(anime) \n2.-Lista de Animes preorder\n3.-Buscar \n4.-Eliminar \n5.-Salir \n\nElige una opcion -> ")
 
     if opc == '1':
         name = input("\nIngresa el nombre -> ")
@@ -160,8 +153,7 @@ while True:
         genero = input("\nIngresa id_genero -> ")
         arbol.insert(float(score),name,float(genero))
     elif opc == '2':
-        #arbol.preorder()
-        arbol.mejor()
+        arbol.preorder()
     elif opc == '3':
         nodo = input("\nIngresa el puntaje del nodoAnime a buscar -> ")
         nodo = float(nodo)
