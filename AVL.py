@@ -210,12 +210,14 @@ class AVLTree():
             inlist.append(i) 
         return inlist 
 
+id_genero = input('Ingrese ID del tipo/genero anime desea agregar al arbol -> ')
 from jikanpy import Jikan
 jikan = Jikan()
-action = jikan.genre(type='anime', genre_id=1) # Obtiene los anime correspondientes a genero_id, 1=action
+action = jikan.genre(type='anime', genre_id=int(id_genero)) # Obtiene los anime correspondientes a genero_id, 1=action
 arbol = AVLTree()
 for anime in action["anime"]:
-    arbol.insert(anime["score"],anime["title"],1)
+    arbol.insert(anime["score"],anime["title"],float(id_genero))
+print("Animes del genero ", str(id_genero), "agregados")
     #print(anime["titulo"], anime["score"]) # Imprime cada anime con su respectiva puntuación
     
 while True:
